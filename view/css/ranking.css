@@ -1,0 +1,41 @@
+.ranking-text {
+    color: white;
+    position: absolute;
+    max-width: 960px;
+    top: 300px;
+    font-family: Inter;
+    left: 32px;
+}
+
+.podium-1 span, .podium-2 span, .podium-3 span {
+    display: block;
+}
+
+.podium-1 .name, .podium-2 .name, .podium-3 .name {
+    font-size: 32px;
+}
+
+.podium-1, .podium-2, .podium-3 {
+    position: absolute;
+    width: 150px;
+    text-align: center;
+}
+
+.podium-1 {
+    top: -90px;
+    left: 375px;
+}
+
+.podium-2 {
+    top: -55px;
+    left: 680px;
+}
+
+.podium-3 {
+    top: -55px;
+    left: 77px;
+}
+
+.text-4 {
+    margin-top: 64px;
+}
