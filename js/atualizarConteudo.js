@@ -37,7 +37,7 @@ function salvarTempo() {
             }
             document.body.appendChild(script);
           }
-          if (page == 500) {
+          if (page == 4) {
             pararAudioFundo();
           }
         } else {

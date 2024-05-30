@@ -1,13 +1,5 @@
 function redirecionar1() {
-    window.location.replace('../controller/draw_scenario1.php');
-}
-
-function redirecionarSetaSairRoom1() {
-  window.location.replace('../controller/draw_scenario2.php');
-}
-
-function redirecionarSetaSairCenario1() {
-  window.location.replace('../controller/draw_scenario3.php');
+    window.location.replace('../controller/choose_phase.php');
 }
 
 function redirecionarSair() {

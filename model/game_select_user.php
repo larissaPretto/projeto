@@ -28,7 +28,7 @@ function search_game($conectado, $idUsuario)
 }
 function playing($page)
 {
-    if ($page != 1 && $page != 51 && $page != 333 && $page != 2 && $page != 52)
+    if ($page != 1 && $page != 51 && $page != 2 && $page != 3 && $page != 52)
         return true;
     else
         return false;

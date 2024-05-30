@@ -11,7 +11,7 @@ if (isset($_SESSION['page']) && isset($_SESSION['idPhases']) && isset($_SESSION[
 
 $user = search_user($conectado, $email);
 
-if ($page != 1 && $page != 333 && $page != 2) {
+if ($page != 1 && $page != 2 && $page != 3) {
     $game = search_game($conectado, $user['idUser']);
     $idGame = $game['idGame'];
     $totalTime = array_reduce(explode(':', $game['time']), function ($total, $time) {
@@ -36,9 +36,6 @@ if ($page != 1 && $page != 333 && $page != 2) {
     <link rel="stylesheet" href="css/default-positions.css">
     <link rel="stylesheet" href="css/tutorial-scenario.css">
     <link rel="stylesheet" href="css/first-scenario.css">
-    <link rel="stylesheet" href="css/puzzleLixo.css">
-    <link rel="stylesheet" href="css/puzzleTeclado.css">
-    <link rel="stylesheet" href="css/second-scenario.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Reem+Kufi&display=swap" rel="stylesheet">
@@ -99,9 +96,19 @@ if ($page != 1 && $page != 333 && $page != 2) {
     <div class="game-area" id="content">
         <?php
         require_once "../controller/render_object.php";
+        renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
+        if ($page == 5) {
+            echo '<div class="initial-terminal-input">';
+            echo '<form action="../controller/save_user_answer.php" method="POST">';
+            echo '<input type="text" name="respUser" class="form-control" placeholder="Resposta" required>';
+            echo '<input type="hidden" name="idPhases" id="idPhases" value="' . $idPhases . '">';
+            echo '<button type="submit" class="enviar">Enviar</button>';
+            echo '</form>';
+            echo '</div>';
+        }
 
         require_once "../view/menu.php";
-        require_once "../view/scenario1.php";
+        require_once "../view/phase1.php";
         require_once "../view/end_game.php";
         ?>
         <div class="locked-message" id="mensagem"></div>
@@ -111,7 +118,6 @@ if ($page != 1 && $page != 333 && $page != 2) {
             var idPhases = <?php echo $idPhases; ?>;
         </script>
     </div>
-    <script src="../js/keyboard_scenario2.js"></script>
     <script src="../js/redirecionarPags.js"></script>
     <script src="../js/atualizarConteudo.js"></script>
     <script src="../js/cronometro.js"></script>

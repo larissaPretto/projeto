@@ -4,9 +4,9 @@ if ($page == 1) {
 ?>
     <div class="menu-buttons">
         <?php
-        echo '<button class="start-menu-button" onclick="redirecionarPagina(500,0);">INICIAR</button>';
+        echo '<button class="start-menu-button" onclick="redirecionarPagina(4,0);">INICIAR</button>';
         echo '<button class="instructions-menu-button" onclick="redirecionarPagina(2,0);">INSTRUÇÕES</button>';
-        echo '<button class="ranking-menu-button" onclick="redirecionarPagina(333,0);">RANKING</button>';
+        echo '<button class="ranking-menu-button" onclick="redirecionarPagina(3,0);">RANKING</button>';
         echo '<button class="exit-menu-button" onclick="redirecionarSair()">SAIR</button>';
         ?>
     </div>
@@ -19,7 +19,7 @@ if ($page == 1) {
 } else if ($page == 2) {
     renderImage("../scenarios/instrucao.png");
     renderButton("down-arrow-position", "redirecionarPagina(1,0);");
-} else if ($page == 333) {
+} else if ($page == 3) {
     renderImage("../scenarios/ranking.png");
     $query = "SELECT * FROM user natural join game where finish = 1 ORDER BY time DESC";
     $result = mysqli_query($conectado, $query);
@@ -50,7 +50,6 @@ if ($page == 1) {
     echo '</ol>';
     echo '</div>';
     renderButton("down-arrow-position", "redirecionarPagina(1,0);");    
-} else if ($page == 500) { //colocar uma descricao da fase
-    renderButton("down-arrow-position", "redirecionarPagina(3,1);");
+} else if ($page == 4) { //colocar uma descricao da fase
+    renderButton("down-arrow-position", "redirecionar1();");
 } 
-?>
