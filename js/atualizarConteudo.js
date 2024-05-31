@@ -102,3 +102,29 @@ function pararAudioFundo() {
     audioFundoAtual = null;
   }
 }
+
+
+function submitForm(event) {
+  event.preventDefault(); 
+  const form = document.getElementById('form_answer');
+  const formData = new FormData(form);
+  fetch('../model/save_user_answer.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log('Resposta do servidor:', data);
+  })
+  .catch(error => {
+    console.error('Erro ao enviar dados via Ajax:', error);
+  });
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('form_answer');
+  if (form) {
+    form.onsubmit = submitForm;
+  }
+});

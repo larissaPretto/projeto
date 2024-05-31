@@ -99,10 +99,10 @@ if ($page != 1 && $page != 2 && $page != 3) {
         renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
         if ($page == 5) {
             echo '<div class="initial-terminal-input">';
-            echo '<form action="../controller/save_user_answer.php" method="POST">';
+            echo '<form id="form_answer" onsubmit="return submitForm(event);">';
             echo '<input type="text" name="respUser" class="form-control" placeholder="Resposta" required>';
-            echo '<input type="hidden" name="idPhases" id="idPhases" value="' . $idPhases . '">';
-            echo '<button type="submit" class="enviar">Enviar</button>';
+            echo '<input type="hidden" name="idGame" id="idGame" value="' . $idGame . '">';
+            echo '<button type="submit" class="enviar" onclick="submitForm(event)">Enviar</button>';
             echo '</form>';
             echo '</div>';
         }

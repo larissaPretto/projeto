@@ -1,10 +1,10 @@
-function redirecionarPagina(page, phase) {
+function redirecionarPagina(page, idPhase) {
     fetch("../controller/update_session.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: "page=" + page + "&idPhase=" + phase,
+            body: "page=" + page + "&idPhase=" + idPhase,
         })
         .then(function(response) {
             if (response.ok) {

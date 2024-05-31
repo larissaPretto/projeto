@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 			if (password_verify($password, $row["password"])) {
 				$_SESSION["email"] = $email;
 				$_SESSION["page"] = 1;
-				$_SESSION["idPhases"] = 0;
+				$_SESSION["idPhases"] = 1;
 				header("Location: ../view/game.php");
 				exit();
 			} else {
