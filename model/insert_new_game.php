@@ -15,10 +15,10 @@ if (mysqli_num_rows($result) === 1) {
 
 if (mysqli_num_rows($result) === 1) {
     $time = '00:15:00';
-    $finish = 0;
+    $finish = $correction = 0;
 
-    $stmt = $conectado->prepare("INSERT INTO game (idUser, time, finish) VALUES (?, ?, ?)");
-    $stmt->bind_param("isi", $idUser, $time, $finish);
+    $stmt = $conectado->prepare("INSERT INTO game (idUser, time, finish, correction) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isii", $idUser, $time, $finish, $correction);
 
     try {
         $stmt->execute();
@@ -26,5 +26,3 @@ if (mysqli_num_rows($result) === 1) {
         die('Erro ao iniciar partida ' . $e->getMessage());
     }
 }
-
-mysqli_close($conectado);

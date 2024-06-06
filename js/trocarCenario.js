@@ -10,11 +10,11 @@ function redirecionarPagina(page, idPhase) {
             if (response.ok) {
                 window.location.href = "../view/game.php";
             } else {
-                console.log("n");
+                console.log("error");
             }
         })
         .catch(function(error) {
-            console.log("na");
+            console.log("error");
         });
 }
 

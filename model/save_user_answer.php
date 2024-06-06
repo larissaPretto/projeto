@@ -17,11 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $respUser = $_POST['respUser'];
         $idGame = $_POST['idGame'];
+        $categories = $_POST['options'];
         $correction = 0;
-        $categories = 1;
+        $obs = "-";
 
-        $stmt = $conectado->prepare("INSERT INTO answeruser (answer, idPhases, idUser, idGame, correction, categories) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("siiiii", $respUser, $idPhases, $idUser, $idGame, $correction, $categories);
+        $stmt = $conectado->prepare("INSERT INTO answeruser (answer, idPhases, idUser, idGame, correct, categories, obs) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("siiiiis", $respUser, $idPhases, $idUser, $idGame, $correction, $categories, $obs);
         $stmt->execute();
 
     } else {

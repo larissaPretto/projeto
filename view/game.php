@@ -1,15 +1,17 @@
 <?php
 session_start();
 require_once "../model/conexao.php";
-require_once "../model/game_select_user.php";
+require_once "../model/functions.php";
 
 if (isset($_SESSION['page']) && isset($_SESSION['idPhases']) && isset($_SESSION['email'])) {
     $page = $_SESSION['page'];
     $idPhases = $_SESSION['idPhases'];
     $email = $_SESSION['email'];
+    $lastPage = $_SESSION['lastPage'];
 }
 
 $user = search_user($conectado, $email);
+$idUser = $user['idUser'];
 
 if ($page != 1 && $page != 2 && $page != 3) {
     $game = search_game($conectado, $user['idUser']);
@@ -35,7 +37,6 @@ if ($page != 1 && $page != 2 && $page != 3) {
     <link rel="stylesheet" href="css/ranking.css">
     <link rel="stylesheet" href="css/default-positions.css">
     <link rel="stylesheet" href="css/tutorial-scenario.css">
-    <link rel="stylesheet" href="css/first-scenario.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Reem+Kufi&display=swap" rel="stylesheet">
@@ -67,7 +68,7 @@ if ($page != 1 && $page != 2 && $page != 3) {
                     salvarTempo();
                 };
                 window.onload = function() {
-                    reproduzirAudio('chuvaJogo', true);
+                    //reproduzirAudio('chuvaJogo', true);
                 };
                 var tempoRestante = <?php echo $totalTime; ?>;
                 var idGame = <?php echo $idGame; ?>;
@@ -75,12 +76,8 @@ if ($page != 1 && $page != 2 && $page != 3) {
             <div class="current-goal">
                 <h1>Objetivo atual</h1>
                 <?php
-                if ($page >= 0 && $page <= 9)
-                    echo '<p>Saia do quarto</p>';
-                else if ($page >= 10 && $page <= 23)
-                    echo '<p>Descubra o código do elevador</p>';
-                else if ($page >= 24 && $page <= 50)
-                    echo '<p>Consiga acesso às escadas</p>';
+                if ($page == 5 or $page >= 10 && $page <= 50)
+                    echo '<p>Descupra os requisitos funcionais, não funcionais e técnicas de levantamento de requisitos</p>';
                 ?>
             </div>
 
@@ -96,18 +93,30 @@ if ($page != 1 && $page != 2 && $page != 3) {
     <div class="game-area" id="content">
         <?php
         require_once "../controller/render_object.php";
-        renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
+        require_once "../view/menu.php";
+
+        if($page >= 10)
+            renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
         if ($page == 5) {
+            require_once "../view/list_answer.php";
             echo '<div class="initial-terminal-input">';
             echo '<form id="form_answer" onsubmit="return submitForm(event);">';
             echo '<input type="text" name="respUser" class="form-control" placeholder="Resposta" required>';
+            echo '<input type="radio" id="option1" name="options" value="1" required>';
+            echo '<label for="option1">Requisito Funcional</label><br>';
+            echo '<input type="radio" id="option2" name="options" value="2" required>';
+            echo '<label for="option2">Requisito Não Funcional</label><br>';     
+            echo '<input type="radio" id="option3" name="options" value="3" required>';
+            echo '<label for="option3">Técnica</label>';
             echo '<input type="hidden" name="idGame" id="idGame" value="' . $idGame . '">';
+            echo '<input type="hidden" name="idPhases" id="idPhases" value="' . $idPhases . '">';
+            echo '<input type="hidden" name="idUser" id="idUser" value="' . $idUser . '">';
             echo '<button type="submit" class="enviar" onclick="submitForm(event)">Enviar</button>';
             echo '</form>';
             echo '</div>';
+            renderButton("down-arrow-position", "salvarTempo(); redirecionarPagina($lastPage, $idPhases);");
         }
 
-        require_once "../view/menu.php";
         require_once "../view/phase1.php";
         require_once "../view/end_game.php";
         ?>

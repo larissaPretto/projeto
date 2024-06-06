@@ -9,7 +9,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `partida` (
     PRIMARY KEY (`idPartida`)
   )";
 
-// Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "partida!";
 } else {
@@ -24,7 +23,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `usuario` (
     PRIMARY KEY (`idUsuario`)
   )";
 
-// Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "usuario!";
 } else {
@@ -40,7 +38,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `puzzle` (
     PRIMARY KEY (`idPuzzle`)
   )";
 
-// Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "puzzle!";
 } else {
@@ -62,7 +59,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `initialroom` (
     FOREIGN KEY (`idPuzzle`) REFERENCES `puzzle` (`idPuzzle`)
   )";
 
-  // Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "Tabela criada com sucesso!";
 } else {
@@ -80,7 +76,6 @@ $sql = "CREATE TABLE IF NOT EXISTS cenario1 (
     FOREIGN KEY (`idPuzzle`) REFERENCES `puzzle` (`idPuzzle`)
 )";
 
-// Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "Tabela criada com sucesso!";
 } else {
@@ -95,7 +90,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `cenario2-pacientes` (
     PRIMARY KEY (`exame`)
   )";
 
-// Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "Tabela criada com sucesso!";
 } else {
@@ -113,7 +107,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `cenario2` (
     FOREIGN KEY (`exame`) REFERENCES `cenario2-pacientes` (`exame`)
   )";
 
-// Executar SQL para criar tabela
 if ($conectado->query($sql) === TRUE) {
     echo "Tabela criada com sucesso!";
 } else {

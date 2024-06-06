@@ -107,6 +107,12 @@ function pararAudioFundo() {
 function submitForm(event) {
   event.preventDefault(); 
   const form = document.getElementById('form_answer');
+
+  if (!form.respUser.value || !form.options.value) {
+    alert('Por favor, preencha todos os campos necessários.');
+    return false;
+  }
+
   const formData = new FormData(form);
   fetch('../model/save_user_answer.php', {
     method: 'POST',
@@ -115,6 +121,8 @@ function submitForm(event) {
   .then(response => response.text())
   .then(data => {
     console.log('Resposta do servidor:', data);
+    updateAnswerList();
+    form.respUser.value = '';
   })
   .catch(error => {
     console.error('Erro ao enviar dados via Ajax:', error);
@@ -128,3 +136,17 @@ document.addEventListener('DOMContentLoaded', function() {
     form.onsubmit = submitForm;
   }
 });
+
+function updateAnswerList() {
+  fetch('../view/list_answer.php', {
+    method: 'POST',
+    body: new FormData(document.getElementById('form_answer')) 
+  })
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('list').innerHTML = data; 
+  })
+  .catch(error => {
+    console.error('Erro ao obter respostas atualizadas:', error);
+  });
+}
