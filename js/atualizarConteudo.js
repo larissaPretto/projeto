@@ -67,7 +67,7 @@ function fimGame(idGame) {
     body: formData
   })
     .then(response => {
-      if (response.ok) {a
+      if (response.ok) {
         atualizarConteudo('../view/game.php');
       } else {
         throw new Error('Erro ao atualizar o inventário.');

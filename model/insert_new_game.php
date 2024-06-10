@@ -15,10 +15,10 @@ if (mysqli_num_rows($result) === 1) {
 
 if (mysqli_num_rows($result) === 1) {
     $time = '00:15:00';
-    $finish = $correction = 0;
+    $finish = $correction = $grade = 0;
 
-    $stmt = $conectado->prepare("INSERT INTO game (idUser, time, finish, correction) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isii", $idUser, $time, $finish, $correction);
+    $stmt = $conectado->prepare("INSERT INTO game (idUser, time, finish, correction, grade) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("isiid", $idUser, $time, $finish, $correction, $grade);
 
     try {
         $stmt->execute();

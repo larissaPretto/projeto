@@ -13,6 +13,9 @@ if (isset($_SESSION['page']) && isset($_SESSION['idPhases']) && isset($_SESSION[
 $user = search_user($conectado, $email);
 $idUser = $user['idUser'];
 
+if($user['access'] == 1)
+    header("Location: ../view/teacher_page.php");
+
 if ($page != 1 && $page != 2 && $page != 3) {
     $game = search_game($conectado, $user['idUser']);
     $idGame = $game['idGame'];
@@ -95,9 +98,10 @@ if ($page != 1 && $page != 2 && $page != 3) {
         require_once "../controller/render_object.php";
         require_once "../view/menu.php";
 
-        if($page >= 10)
+        if($page >= 10) { //buttons that always appear
             renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
-        if ($page == 5) {
+            renderButton("start-menu-button", "salvarTempo(); fimGame($idGame); redirecionarPagina(1,$idPhases);");
+        } else if ($page == 5) { // user response page
             require_once "../view/list_answer.php";
             echo '<div class="initial-terminal-input">';
             echo '<form id="form_answer" onsubmit="return submitForm(event);">';
@@ -115,7 +119,7 @@ if ($page != 1 && $page != 2 && $page != 3) {
             echo '</form>';
             echo '</div>';
             renderButton("down-arrow-position", "salvarTempo(); redirecionarPagina($lastPage, $idPhases);");
-        }
+        } 
 
         require_once "../view/phase1.php";
         require_once "../view/end_game.php";
