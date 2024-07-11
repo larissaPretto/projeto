@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/06/2024 às 02:01
+-- Tempo de geração: 11/07/2024 às 02:37
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,8 +32,18 @@ USE `projeto`;
 CREATE TABLE `answerphase` (
   `idAnsPhase` int(11) NOT NULL,
   `idPhase` int(11) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `categories` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `answerphase`
+--
+
+INSERT INTO `answerphase` (`idAnsPhase`, `idPhase`, `description`, `categories`) VALUES
+(1, 1, 'a', 1),
+(2, 1, 'bb', 2),
+(3, 1, 'cc', 3);
 
 -- --------------------------------------------------------
 
@@ -110,9 +120,9 @@ INSERT INTO `answeruser` (`idAnsUser`, `answer`, `idPhases`, `idUser`, `idGame`,
 (68, '1234', 1, 3, 36, 0, 1, ''),
 (69, '7348', 1, 3, 37, 0, 2, ''),
 (70, 'drgd', 1, 3, 39, 1, 2, '-ddsdsds'),
-(71, 'xf', 1, 3, 39, 1, 1, '-ssss'),
+(71, 'xf', 1, 3, 39, 0, 1, '-ssss'),
 (72, 'dfbr', 1, 3, 39, 1, 3, '-adfsfsfdf'),
-(73, 'xdfg', 1, 3, 39, 0, 3, 'wwwwwwwwww'),
+(73, 'xdfg', 1, 3, 39, 0, 3, ''),
 (74, 'assas', 1, 3, 39, 1, 1, '-w'),
 (75, 'dgd', 1, 3, 40, 0, 1, '-'),
 (76, 'ut6u', 1, 3, 40, 0, 2, '-'),
@@ -179,7 +189,7 @@ INSERT INTO `game` (`idGame`, `idUser`, `time`, `finish`, `correction`, `grade`)
 (36, 3, '00:12:35', 0, 0, 0),
 (37, 3, '00:14:15', 0, 0, 0),
 (38, 3, '00:10:35', 0, 0, 0),
-(39, 3, '00:06:17', 1, 1, 8),
+(39, 3, '00:06:17', 1, 1, 6),
 (40, 3, '00:00:00', 0, 0, 0),
 (41, 3, '00:11:36', 0, 0, 0),
 (42, 7, '00:15:00', 0, 0, 0),
@@ -288,7 +298,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `answerphase`
 --
 ALTER TABLE `answerphase`
-  MODIFY `idAnsPhase` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAnsPhase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `answeruser`
