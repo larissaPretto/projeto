@@ -23,5 +23,6 @@ if ($page == 1) {
 
     renderButton("down-arrow-position", "redirecionarPagina(1,1);");    
 } else if ($page == 4) { //colocar uma descricao da fase
-    renderButton("down-arrow-position", "redirecionar1();");
+    renderImage("../scenarios/game/description.png");
+    renderButton("right-arrow-position", "redirecionar1();");
 } 
