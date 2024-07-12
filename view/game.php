@@ -99,8 +99,8 @@ if ($page != 1 && $page != 2 && $page != 3) {
         require_once "../view/menu.php";
 
         if($page >= 10) { //buttons that always appear
-            renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
-            renderButton("start-menu-button", "salvarTempo(); fimGame($idGame); redirecionarPagina(1,$idPhases);");
+            renderButton("notebook-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
+            //renderButton("start-menu-button", "salvarTempo(); fimGame($idGame); redirecionarPagina(1,$idPhases);");
         } else if ($page == 5) { // user response page
             require_once "../view/list_answer.php";
             echo '<div class="initial-terminal-input">';

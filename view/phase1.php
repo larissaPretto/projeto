@@ -7,12 +7,12 @@ switch ($page) {
         break;
 
     case 11:
-        renderImage("../scenarios/game/receptionist.png");
+        renderImage("../scenarios/game/receptionist1.png");
         renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(10,$idPhases);");
         break;
 
     case 12:
-        renderImage("../scenarios/game/receptionist.png");
+        renderImage("../scenarios/game/receptionist2.png");
         renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(10,$idPhases);");
         break;
 

@@ -61,3 +61,10 @@ button {
 .cutscene video {
     border-radius: 16px; 
 }
+
+.notebook-position {
+    width: 100px;
+    height: 80px;
+    top: 0px;
+    right: 0px;
+}
