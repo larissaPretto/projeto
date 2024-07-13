@@ -22,7 +22,7 @@ $stmt->execute();
 
 $idUser = $stmt->insert_id;
 
-$time = '00:15:00';
+$time = '00:20:00';
 $finish = $correction = $grade = 0;
 
 $stmt2 = $conectado->prepare("INSERT INTO game (idUser, time, finish, correction, grade) VALUES (?, ?, ?, ?, ?)");
