@@ -29,6 +29,21 @@ function search_user_game_revised($conectado, $idUser)
     return null;
 }
 
+function search_user_game_finish($conectado, $idUser)
+{
+    $query = "SELECT idGame FROM game WHERE idUser = ? and finish = 1";
+    $stmt = mysqli_prepare($conectado, $query);
+    mysqli_stmt_bind_param($stmt, "i", $idUser);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        return $row;
+    }
+    mysqli_stmt_close($stmt);
+    return null;
+}
+
 function search_game($conectado, $idUsuario)
 {
     $query = "SELECT time, idGame FROM game WHERE idUser = ? ORDER BY idGame DESC LIMIT 1";
@@ -124,4 +139,22 @@ function playing($page)
         return true;
     else
         return false;
+}
+
+function delete_game($conectado, $idGame) 
+{
+    $query = "DELETE FROM game WHERE idGame = ?";
+    $stmt = mysqli_prepare($conectado, $query);
+
+    if ($stmt === false) {
+        echo "Erro ao preparar a consulta: " . mysqli_error($conectado);
+        return;
+    }
+    mysqli_stmt_bind_param($stmt, "i", $idGame);
+    if ($stmt->execute()) {
+        echo "Registro deletado com sucesso.";
+    } else {
+        echo "Erro ao deletar o registro: " . $stmt->error;
+    }
+    $stmt->close();
 }

@@ -5,12 +5,14 @@ function redirecionar1() {
 function redirecionarSair() {
     window.location.replace('../controller/logout.php');
 }
+function redirecionarPageStudent() {
+  window.location.replace('../view/student_page.php');
+}
 
 function redirecionarPagina(page, idPhase) {
   const formData = new FormData();
   formData.append('page', page);
   formData.append('idPhase', idPhase);
-console.log(idPhase);
   fetch('../controller/update_session.php', {
     method: 'POST',
     body: formData

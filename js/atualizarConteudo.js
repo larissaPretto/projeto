@@ -46,35 +46,29 @@ function salvarTempo() {
       })
       .catch(error => console.log(error));
   }
-  
-  function exibirMensagem(texto, time) {
-    var mensagemDiv = document.getElementById('mensagem');
-    mensagemDiv.innerText = texto;
-    mensagemDiv.style.display = 'block';
-
-    setTimeout(function() {
-        mensagemDiv.innerText = '';
-        mensagemDiv.style.display = 'none';
-    }, time);
-}
 
 function fimGame(idGame) {
   let formData = new FormData();
   formData.append('idGame', idGame);
   
   fetch('../model/game_over.php', {
-    method: 'POST',
-    body: formData
+      method: 'POST',
+      body: formData
   })
-    .then(response => {
+  .then(response => {
       if (response.ok) {
-        atualizarConteudo('../view/game.php');
+          return response.text(); 
       } else {
-        throw new Error('Erro ao atualizar o inventário.');
+          throw new Error('Erro ao atualizar');
       }
-    })
-    .catch(error => console.error(error));
+  })
+  .then(responseText => {
+      console.log(responseText); 
+      atualizarConteudo('../view/game.php');
+  })
+  .catch(error => console.error(error));
 }
+
 
 var audioFundoAtual;
 

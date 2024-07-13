@@ -102,7 +102,6 @@
             <!-- Container de respostas do aluno -->
             <div class="col-md-12 container-left">
                 <div class="form-container">
-                    <div class="container-title">Respostas do Aluno</div>
                     <?php
                     session_start();
                     require_once "../model/conexao.php";
@@ -112,52 +111,61 @@
 
                     $idGame = search_user_game_revised($conectado, $user["idUser"]);
    
-                    // Categorias de requisitos
-                    $categories = array(
-                        'Requisitos Funcionais' => 1,
-                        'Requisitos Não Funcionais' => 2,
-                        'Técnicas de levantamento de requisitos' => 3
-                    );
+                    if(isset($idGame)) {
+                        echo '<div class="container-title">Respostas do Aluno</div>';
+                        // Categorias de requisitos
+                        $categories = array(
+                            'Requisitos Funcionais' => 1,
+                            'Requisitos Não Funcionais' => 2,
+                            'Técnicas de levantamento de requisitos' => 3
+                        );
 
-                    foreach ($categories as $categoryName => $category) {
-                        $answers = search_answer($conectado, 1, $idGame["idGame"], $user["idUser"], $category);
+                        foreach ($categories as $categoryName => $category) {
+                            $answers = search_answer($conectado, 1, $idGame["idGame"], $user["idUser"], $category);
 
-                        echo '<div class="category-section">';
-                        echo '<div class="category-title">' . $categoryName . '</div>';
+                            echo '<div class="category-section">';
+                            echo '<div class="category-title">' . $categoryName . '</div>';
 
-                        echo '<div class="row">'; // Início da linha de respostas
+                            echo '<div class="row">'; // Início da linha de respostas
 
-                        foreach ($answers as $answer) {
-                            echo '<div class="col-md-6 mb-3">';
-                            
-                            // Wrapper para resposta e checkbox
-                            echo '<div class="response-textarea-wrapper">';
-                            
-                            // Resposta
-                            echo '<div class="response-section">';
-                            echo '<label class="text-white">Resposta:</label>';
-                            echo '<textarea class="form-control-plaintext" readonly>' . $answer['answer'] . '</textarea>';
-                            echo '</div>';
-                            
-                            // Observação
-                            echo '<div class="obs-section">';
-                            echo '<label class="text-white">Obs:</label>';
-                            echo '<textarea class="form-control-plaintext" readonly>' . $answer['obs'] . '</textarea>';
-                            echo '</div>';
+                            foreach ($answers as $answer) {
+                                echo '<div class="col-md-6 mb-3">';
+                                
+                                // Wrapper para resposta e checkbox
+                                echo '<div class="response-textarea-wrapper">';
+                                
+                                // Resposta
+                                echo '<div class="response-section">';
+                                echo '<label class="text-white">Resposta:</label>';
+                                echo '<textarea class="form-control-plaintext" readonly>' . $answer['answer'] . '</textarea>';
+                                echo '</div>';
+                                
+                                // Observação
+                                echo '<div class="obs-section">';
+                                echo '<label class="text-white">Obs:</label>';
+                                echo '<textarea class="form-control-plaintext" readonly>' . $answer['obs'] . '</textarea>';
+                                echo '</div>';
 
-                            // Correção
-                            echo '<div class="response-checkbox-wrapper">';
-                            echo '<label class="text-white">Correção:</label>';
-                            echo '<input type="checkbox" disabled ' . ($answer['correct'] ? 'checked' : '') . '>';
-                            echo '</div>'; // Fechamento do response-checkbox-wrapper
+                                // Correção
+                                echo '<div class="response-checkbox-wrapper">';
+                                echo '<label class="text-white">Correção:</label>';
+                                echo '<input type="checkbox" disabled ' . ($answer['correct'] ? 'checked' : '') . '>';
+                                echo '</div>'; // Fechamento do response-checkbox-wrapper
 
-                            echo '</div>'; // Fechamento do response-textarea-wrapper
-                            echo '</div>'; // Fechamento da coluna
+                                echo '</div>'; // Fechamento do response-textarea-wrapper
+                                echo '</div>'; // Fechamento da coluna
 
+                            }
+
+                            echo '</div>'; // Fechamento da row
+                            echo '</div>'; // Fechamento da category-section
                         }
+                    } else {
+                        echo '<div class="form-container">';
+                            echo '<div class="container-title">Sem jogo corrigido</div>';
+                            echo '</div>'; 
+                        echo '</div>';
 
-                        echo '</div>'; // Fechamento da row
-                        echo '</div>'; // Fechamento da category-section
                     }
                     ?>
                 </div>
