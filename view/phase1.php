@@ -66,7 +66,7 @@ switch ($page) {
     case 17: //Jessica1
         renderImage("../scenarios/game/jessica1.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Olá! Posso Ajudar ?</p>';
+        echo '<p id="message">Olá! Eu sou a Jessica, como posso ajudar?</p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(26,$idPhases);");
         renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(15,$idPhases);");
