@@ -75,7 +75,7 @@ switch ($page) {
     case 26: //jessica2
         renderImage("../scenarios/game/jessica2.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Falei com o Robson</p>';
+        echo '<p id="message">Oi Jessica! Conversei com o Robson, ele disse que você podia me falar mais sobre os livros, vou desenvolver a novo sistema de gestão da livraria.</p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(27,$idPhases);");
         break;
@@ -83,8 +83,8 @@ switch ($page) {
     case 27: //jessica3
         renderImage("../scenarios/game/jessica3.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Atualmente, armazenamos informações sobre os livros e os gêneros que temos em estoque. <br>No entanto, o chefe deixou anotado mais alguns dados que ele gostaria de incluir no sistema. 
-        <br>Essas anotações estão em um caderno na sala de reunião. Além disso, o sistema deve permitir <br>operações de inclusão, edição, exclusão e busca de todos os dados. <br>Ele também deve ser rápido e fácil de usar para garantir uma experiência eficiente para todos.</p>';
+        echo '<p id="message">Claro! Atualmente, armazenamos informações sobre os livros e os gêneros que temos no estoque. <br>No entanto, o chefe deixou anotado mais alguns dados que ele gostaria de incluir no sistema. 
+        <br>Ele anota em uns livros e os deixa na sala dos funcionários no 2º andar. Ah, o sistema deve permitir <br>adcionar, editar a apagar e buscar dados. <br>E ser rápido e fácil de usar também é muito importante para nós!</p>';
         echo '</div>';
         renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(29,$idPhases);");
         break;
