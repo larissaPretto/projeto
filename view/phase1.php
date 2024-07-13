@@ -9,7 +9,7 @@ switch ($page) {
     case 11:
         renderImage("../scenarios/game/receptionist1.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Olá, bem vindo à livraria Leituras Ilimitadas, como posso ajudar?</p>';
+        echo '<p id="message">Olá, eu sou o Robson! Seja muito bem vindo à livraria Leituras Ilimitadas, como posso ajudar você hoje?</p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(12,$idPhases);");
         break;
@@ -17,23 +17,23 @@ switch ($page) {
     case 12:
         renderImage("../scenarios/game/receptionist2.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Fui contratado para fazer o sistema de sua livraria. Você pode me explicar <br>como funciona o sistema de cadastro e venda atualmente?</p>';
+        echo '<p id="message">Oi Robson! Fui contratado para desenvolver o novo sistema de gestão da livraria. Você pode me explicar <br>como funciona o sistema de cadastro e venda atualmente?</p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(13,$idPhases);");
         break;
     case 13:
         renderImage("../scenarios/game/receptionist1.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Deixe-me esclarecer como nosso sistema de cadastro e vendas funciona. Atualmente, <br>tudo é feito de maneira manual. Nós anotamos todas as informações em uma planilha. 
-        <br>Registramos os dados do cliente, os detalhes da venda e dos livros. Se quiser dar uma <br>olhada na planilha e verificar os dados solicitados, pode ir à sala de reunião, que <br>fica no segundo andar. </p>';
+        echo '<p id="message">Claro! Atualmente, <br>tudo é feito manualmente. Nós anotamos todas as informações em planilhas. 
+        <br>Registramos os dados do cliente, os detalhes da venda e dos livros. Se quiser dar uma <br>olhada nas planilhas, fique a vontade para ir à sala dos funcionários, <br>fica no segundo andar. </p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(14,$idPhases);");
         break;
     case 14:
         renderImage("../scenarios/game/receptionist4.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Além disso, gostaríamos de guardar informações dos vendedores, como nome, endereço, <br>data de nascimento e salário. É importante mencionar que todos esses dados devem 
-        <br>ser mantidos de forma segura e o sistema deve estar sempre disponível durante o horário de <br>funcionamento da livraria . Para mais informações sobre os livros, <br>você pode falar com minha colega, Jessica. Ela estará feliz em ajudar!</p>';
+        echo '<p id="message">Além disso, também gostaríamos de guardar informações dos vendedores, como nome, endereço, <br>data de nascimento e salário. É importante lembrar que esses dados são sensíveis,
+        e o sistema precisa estar sempre disponível durante o horário de <br>funcionamento da livraria. Ah, se você quiser saber mais sobre os livros, <br>pode falar com a minha colega Jessica. Ela ficará feliz em ajudar!</p>';
         echo '</div>';
         renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(15,$idPhases);");
         break;
