@@ -150,3 +150,29 @@ function updateAnswerList() {
     console.error('Erro ao obter respostas atualizadas:', error);
   });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(function() {
+      document.getElementById("message").classList.add("typing-complete");
+  }, 3000);
+});
+
+//popup
+document.addEventListener("DOMContentLoaded", function() {
+  const typingDuration = 3000;  
+  setTimeout(function() {
+      document.getElementById("message").classList.add("typing-complete");
+  }, typingDuration);
+});
+
+function showExitPopup() {
+  document.getElementById("exitPopup").style.display = "flex";
+}
+
+function hideExitPopup() {
+  document.getElementById("exitPopup").style.display = "none";
+}
+
+function exitGame() {
+  window.location.href = "../model/game_over.php";
+}

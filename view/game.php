@@ -43,6 +43,7 @@ if ($page != 1 && $page != 2 && $page != 3) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Reem+Kufi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <!-- audios -->
     <?php
     $audios = [
@@ -100,7 +101,6 @@ if ($page != 1 && $page != 2 && $page != 3) {
 
         if($page >= 10) { //buttons that always appear
             renderButton("notebook-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
-            //renderButton("start-menu-button", "salvarTempo(); fimGame($idGame); redirecionarPagina(1,$idPhases);");
         } else if ($page == 5) { // user response page
             require_once "../view/list_answer.php";
             echo '<div class="initial-terminal-input">';
@@ -119,17 +119,22 @@ if ($page != 1 && $page != 2 && $page != 3) {
             echo '</form>';
             echo '</div>';
             renderButton("down-arrow-position", "salvarTempo(); redirecionarPagina($lastPage, $idPhases);");
-        } 
-
+        }
         require_once "../view/phase1.php";
         require_once "../view/end_game.php";
         ?>
-        <div class="locked-message" id="mensagem"></div>
 
         <script>
             var page = <?php echo $page; ?>;
             var idPhases = <?php echo $idPhases; ?>;
         </script>
+    <div id="exitPopup" class="popup">
+        <div class="popup-content">
+            <p>Você realmente deseja sair do jogo? Suas resposta serão enviadas para correção</p>
+            <button class="popup-button-yes" onclick="salvarTempo(); fimGame(<?php echo $idGame; ?>); redirecionarPagina(1, <?php echo $idPhases; ?>);">Sim</button>
+            <button class="popup-button-no" onclick="hideExitPopup()">Não</button>
+        </div>
+    </div>
     </div>
     <script src="../js/redirecionarPags.js"></script>
     <script src="../js/atualizarConteudo.js"></script>

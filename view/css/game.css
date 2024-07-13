@@ -15,16 +15,16 @@ body {
   border-radius: 16px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
-  
+
 .now-playing,
 .current-goal,
 .remaining-time {
-    margin: 0 10px;
-    text-align: left;
+  margin: 0 10px;
+  text-align: left;
 }
-  
+
 h1 {
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -32,13 +32,13 @@ h1 {
 }
 
 p {
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 19px;
 }
- 
+
 .game-area {
   width: 960px;
   height: 540px;
@@ -62,4 +62,107 @@ p {
 .inventory-item {
   width: 42px;
   height: 42px;
+}
+
+#messageContainer {
+  position: absolute;
+  top: 410px;  /* Ajuste conforme necessário */
+  left: 20px;  /* Ajuste conforme necessário */
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  max-width: 85%;
+}
+
+#message {
+  color: white;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid;
+  width: 0;
+  animation: typing 3s steps(60, end) forwards, blink-caret 0.75s step-end 4s;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+#message.typing-complete {
+  border-right: none;
+}
+
+
+/* Estilo geral para o popup */
+.popup {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para o conteúdo do popup */
+.popup-content {
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1000; /* Garante que o conteúdo do popup esteja sobre outros elementos */
+}
+
+/* Estilo para o botão 'Sim' */
+.popup-button-yes {
+  opacity: 1 !important; /* Garante a visibilidade do botão */
+  display: inline-block; /* Garante que o botão seja exibido em linha */
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Verde para o botão 'Sim' */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  left: 35%;
+  transform: translateX(-50%); /* Centraliza o botão horizontalmente */
+}
+
+/* Estilo para o botão 'Não' */
+.popup-button-no {
+  opacity: 1 !important; /* Garante a visibilidade do botão */
+  display: inline-block; /* Garante que o botão seja exibido em linha */
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #f44336; /* Vermelho para o botão 'Não' */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  right: 50%;
+  transform: translateX(50%); /* Centraliza o botão horizontalmente */
+}
+
+/* Estilo para o botão quando passa o mouse por cima */
+.popup-button-yes:hover {
+  background-color: #45a049;
+}
+
+.popup-button-no:hover {
+  background-color: #e53935;
 }

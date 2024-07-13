@@ -68,3 +68,52 @@ button {
     top: 0px;
     right: 0px;
 }
+
+.nextt-position {
+    width: 50px;
+    height: 50px;
+    top: 438px;
+    right: 45px;
+}
+
+.second-f-position {
+    width: 50px;
+    height: 50px;
+    top: 220px;
+    right: 280px;
+}
+
+.pc-position {
+    width: 150px;
+    height: 90px;
+    top: 190px;
+    right: 545px;
+}
+
+.excel-position {
+    width: 90px;
+    height: 70px;
+    top: 85px;
+    left: 150px;
+}
+
+.form-position {
+    width: 90px;
+    height: 70px;
+    top: 180px;
+    left: 150px;
+}
+
+.exit-position {
+    width: 20px;
+    height: 20px;
+    top: 53px;
+    right: 195px;
+}
+
+.secondf-book-position {
+    width: 85px;
+    height: 40px;
+    top: 460px;
+    left: 160px;
+}
