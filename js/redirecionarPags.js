@@ -9,6 +9,10 @@ function redirecionarPageStudent() {
   window.location.replace('../view/student_page.php');
 }
 
+function attPage() {
+  window.location.reload();
+}
+
 function redirecionarPagina(page, idPhase) {
   const formData = new FormData();
   formData.append('page', page);
