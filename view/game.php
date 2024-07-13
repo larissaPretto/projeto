@@ -139,7 +139,7 @@ if ($page != 1 && $page != 2 && $page != 3) {
     <div id="exitPopup" class="popup">
         <div class="popup-content">
             <p>Você realmente deseja sair do jogo? Suas resposta serão enviadas para correção</p>
-            <button class="popup-button-yes" onclick="salvarTempo(); fimGame(<?php echo $idGame; ?>); redirecionarPagina(51, <?php echo $idPhases; ?>);">Sim</button>
+            <button class="popup-button-yes" onclick="salvarTempo(); fimGame(<?php echo $idGame; ?>); redirecionarPagina(51, <?php echo $idPhases; ?>); attPage();">Sim</button>
             <button class="popup-button-no" onclick="hideExitPopup()">Não</button>
         </div>
     </div>

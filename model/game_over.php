@@ -4,7 +4,7 @@ require_once "functions.php";
 session_start();
 
 $user = search_user($conectado, $_SESSION["email"]);
-$game = search_user_game_finish($conectado, $user);
+$game = search_user_game_finish($conectado, $user["idUser"]);
 
 if (isset($game)) {
     delete_game($conectado, $game["idGame"]);
