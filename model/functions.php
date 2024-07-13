@@ -114,7 +114,7 @@ function list_answer ($answers)
             echo " " . $answer['answer'] .  "<br>";
         }
     } else {
-        echo "-<br>";
+        echo "<br>";
     }   
 }
 
