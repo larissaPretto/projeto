@@ -46,6 +46,14 @@ switch ($page) {
         renderButton("down-arrow-position", "salvarTempo(); showExitPopup();");
         break;
 
+    case 29: //hall final
+        renderImage("../scenarios/game/hall2.png");
+        renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(16,$idPhases);");
+        renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(28,$idPhases);");
+        renderButton("second-f-position", "salvarTempo(); redirecionarPagina(18,$idPhases);");
+        renderButton("down-arrow-position", "salvarTempo(); showExitPopup();");
+        break;
+
     case 16: //back robson
         renderImage("../scenarios/game/receptionist3.png");
         echo '<div id="messageContainer">';
@@ -55,15 +63,41 @@ switch ($page) {
         renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(15,$idPhases);");
         break;
 
-    case 17: //Jessica
-        renderImage("../scenarios/game/jessica.png");
+    case 17: //Jessica1
+        renderImage("../scenarios/game/jessica1.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Olá! Atualmente, armazenamos informações sobre os livros e os gêneros que temos em estoque. <br>No entanto, o chefe deixou anotado mais alguns dados que ele gostaria de incluir no sistema. <br>Essas anotações estão em um caderno na sala de reunião. 
-        Além disso, o sistema deve permitir <br>operações de inclusão, edição, exclusão e busca de todos os dados. Ele também deve ser <br>rápido e fácil de usar para garantir uma experiência eficiente para todos.</p>';
+        echo '<p id="message">Olá! Posso Ajudar ?</p>';
         echo '</div>';
+        renderButton("nextt-position", "salvarTempo(); redirecionarPagina(26,$idPhases);");
         renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(15,$idPhases);");
         break;
 
+    case 26: //jessica2
+        renderImage("../scenarios/game/jessica2.png");
+        echo '<div id="messageContainer">';
+        echo '<p id="message">Falei com o Robson</p>';
+        echo '</div>';
+        renderButton("nextt-position", "salvarTempo(); redirecionarPagina(27,$idPhases);");
+        break;
+
+    case 27: //jessica3
+        renderImage("../scenarios/game/jessica3.png");
+        echo '<div id="messageContainer">';
+        echo '<p id="message">Atualmente, armazenamos informações sobre os livros e os gêneros que temos em estoque. <br>No entanto, o chefe deixou anotado mais alguns dados que ele gostaria de incluir no sistema. 
+        <br>Essas anotações estão em um caderno na sala de reunião. Além disso, o sistema deve permitir <br>operações de inclusão, edição, exclusão e busca de todos os dados. <br>Ele também deve ser rápido e fácil de usar para garantir uma experiência eficiente para todos.</p>';
+        echo '</div>';
+        renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(29,$idPhases);");
+        break;
+
+    case 28: //jessica1
+        renderImage("../scenarios/game/jessica1.png");
+        echo '<div id="messageContainer">';
+        echo '<p id="message">Gostaria que eu repetisse ?</p>';
+        echo '</div>';
+        renderButton("nextt-position", "salvarTempo(); redirecionarPagina(27,$idPhases);");
+        renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(29,$idPhases);");
+        break;
+    
     case 18: //second floor
         renderImage("../scenarios/game/secondf.png");
         renderButton("pc-position", "salvarTempo(); redirecionarPagina(19,$idPhases);");

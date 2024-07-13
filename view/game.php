@@ -99,7 +99,6 @@ if ($page != 1 && $page != 2 && $page != 3) {
 
         if($page >= 10) { //buttons that always appear
             renderButton("notebook-position", "salvarTempo(); redirecionarPagina(5,$idPhases);");
-            //renderButton("start-menu-button", "salvarTempo(); fimGame($idGame); redirecionarPagina(1,$idPhases);");
         } else if ($page == 5) { // user response page
             renderImage("../scenarios/game/notebook.png"); 
             echo '<div class="initial-terminal-input">';
