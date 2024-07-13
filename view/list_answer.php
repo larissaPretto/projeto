@@ -1,8 +1,3 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Reem+Kufi&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
 <?php
 require_once "../model/conexao.php";
 require_once "../model/functions.php";
@@ -13,7 +8,6 @@ if (isset($_POST['idPhases']) && isset($_POST['idGame']) && isset($_POST['idUser
     $idUser = $_POST['idUser'];
 }
 
-echo '<div id="list">';
 echo '<b>Requisito Funcional</b><br><br>';
 $answers = search_answer($conectado, $idPhases, $idGame, $idUser, 1);
 list_answer($answers);
@@ -25,7 +19,6 @@ list_answer($answers);
 echo '<br><b>Técnicas</b><br><br>';
 $answers = search_answer($conectado, $idPhases, $idGame, $idUser, 3);
 list_answer($answers);
-echo '</div>';
 
 
 ?>

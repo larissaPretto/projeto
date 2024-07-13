@@ -44,8 +44,6 @@ if ($page != 1 && $page != 2 && $page != 3) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Reem+Kufi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <!-- audios -->
     <?php
@@ -73,9 +71,6 @@ if ($page != 1 && $page != 2 && $page != 3) {
             <script>
                 window.onbeforeunload = function() {
                     salvarTempo();
-                };
-                window.onload = function() {
-                    //reproduzirAudio('chuvaJogo', true);
                 };
                 var tempoRestante = <?php echo $totalTime; ?>;
                 var idGame = <?php echo $idGame; ?>;
@@ -128,7 +123,9 @@ if ($page != 1 && $page != 2 && $page != 3) {
             echo '<button type="submit" class="pencil-button" onclick="submitForm(event)"></button>';
             echo '</form>';
             echo '</div>';
+            echo '<div id="list">';
             require_once "../view/list_answer.php";
+            echo '</div>';
             renderButton("down-arrow-position", "salvarTempo(); redirecionarPagina($lastPage, $idPhases);");
             
         }
