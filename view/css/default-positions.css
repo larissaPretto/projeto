@@ -8,30 +8,23 @@ button {
 
 /* Menu buttons positions */
 .start-menu-button {
-    width: 100px;
-    height: 25px;
-    top: 85px;
+    width: 130px;
+    height: 30px;
+    top: 100px;
     left: 80px;
 }
 
 .instructions-menu-button {
-    width: 150px;
-    height: 25px;
-    top: 137px;
-    left: 80px;
-}
-
-.ranking-menu-button {
     width: 120px;
     height: 25px;
-    top: 195px;
+    top: 160px;
     left: 80px;
 }
 
 .exit-menu-button {
-    width: 65px;
+    width: 80px;
     height: 25px;
-    top: 255px;
+    top: 215px;
     left: 80px;
 }
 

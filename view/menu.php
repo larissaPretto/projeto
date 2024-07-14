@@ -1,6 +1,6 @@
 <?php
 if ($page == 1) {
-    renderImage("../scenarios/menu.gif");
+    renderImage("../scenarios/menu.png");
 ?>
     <div class="menu-buttons">
         <?php
