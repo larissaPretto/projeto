@@ -57,7 +57,7 @@ switch ($page) {
     case 16: //back robson
         renderImage("../scenarios/game/receptionist3.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Gostaria que eu explicasse novamente?</p>';
+        echo '<p id="message">Oi! Gostaria que eu explicasse novamente?</p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(13,$idPhases);");
         renderButton("right-arrow-position", "salvarTempo(); redirecionarPagina(15,$idPhases);");
@@ -92,7 +92,7 @@ switch ($page) {
     case 28: //jessica1
         renderImage("../scenarios/game/jessica1.png");
         echo '<div id="messageContainer">';
-        echo '<p id="message">Gostaria que eu repetisse ?</p>';
+        echo '<p id="message">Oi de novo! Gostaria que eu repetisse o que precisamos pro sistema?</p>';
         echo '</div>';
         renderButton("nextt-position", "salvarTempo(); redirecionarPagina(27,$idPhases);");
         renderButton("left-arrow-position", "salvarTempo(); redirecionarPagina(29,$idPhases);");
