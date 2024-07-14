@@ -28,7 +28,7 @@ $finish = $correction = $grade = 0;
 
 $stmt = $conectado->prepare("INSERT INTO game (idUser, time, date, finish, correction, grade) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("issiii", $idUser, $time, $date, $finish, $correction, $grade);
-$stmt2->execute();
+$stmt->execute();
 
 header('location: ../index.php');
  

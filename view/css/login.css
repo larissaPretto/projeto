@@ -13,22 +13,10 @@ body {
   height: 100vh;
 }
 
-.image {
-  flex: 1;
-  text-align: left;
-}
-
-.image img {
-  width: 200%;
-  max-width: 500px;
-  height: auto;
-  right: 0px;
-}
-
 .form {
-  flex: 1;
   text-align: left;
-  margin-left: 20px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .title {
@@ -119,4 +107,4 @@ body {
 .invalid-feedback {
   margin-bottom: -8px;
   margin-left: 16px;
-}  
+}

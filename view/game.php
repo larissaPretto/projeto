@@ -79,7 +79,7 @@ if ($page != 1 && $page != 2 && $page != 3) {
                 <h1>Objetivo atual</h1>
                 <?php
                 if ($page == 5 or $page >= 10 && $page <= 50)
-                    echo '<p>Descupra os requisitos funcionais, não funcionais e técnicas de levantamento de requisitos</p>';
+                    echo '<p>Descubra os requisitos funcionais, não funcionais e técnicas</p>';
                 ?>
             </div>
 
