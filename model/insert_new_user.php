@@ -23,10 +23,11 @@ $stmt->execute();
 $idUser = $stmt->insert_id;
 
 $time = '00:20:00';
+$date = date('Y-m-d H:i:s');
 $finish = $correction = $grade = 0;
 
-$stmt2 = $conectado->prepare("INSERT INTO game (idUser, time, finish, correction, grade) VALUES (?, ?, ?, ?, ?)");
-$stmt2->bind_param("isiid", $idUser, $time, $finish, $correction, $grade);
+$stmt = $conectado->prepare("INSERT INTO game (idUser, time, date, finish, correction, grade) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("issiii", $idUser, $time, $date, $finish, $correction, $grade);
 $stmt2->execute();
 
 header('location: ../index.php');

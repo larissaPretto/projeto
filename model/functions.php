@@ -61,7 +61,7 @@ function search_game($conectado, $idUsuario)
 
 function list_players($conectado)
 {
-    $query = "SELECT * FROM user natural join game WHERE finish = 1";
+    $query = "SELECT * FROM user natural join game WHERE finish = 1 ORDER BY date desc";
     $stmt = mysqli_prepare($conectado, $query);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
@@ -72,6 +72,7 @@ function list_players($conectado)
             'name' => $row['name'],
             'idGame' => $row['idGame'],
             'time' => $row['time'],
+            'date' => $row['date'],
             'correction' => $row['correction'],
             'grade' => $row['grade']
         );

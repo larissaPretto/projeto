@@ -148,7 +148,7 @@ function updateAnswerList() {
 document.addEventListener("DOMContentLoaded", function() {
   setTimeout(function() {
       document.getElementById("message").classList.add("typing-complete");
-  }, 3000);
+  }, 4000);
 });
 
 //popup

@@ -40,6 +40,7 @@
         echo '<tr class="text-center">';
         echo '<th>Nome</th>';
         echo '<th>Tempo</th>';
+        echo '<th>Data</th>';
         echo '<th>Nota</th>';
         echo '<th>Status</th>';
         echo '</tr>';
@@ -50,6 +51,7 @@
             echo '<tr class="text-center">';
             echo '<td>' . $player['name'] . '</td>';
             echo '<td>' . $player['time'] . '</td>';
+            echo '<td>' . $player['date'] . '</td>';
             if($player['correction'] == 0) 
                 echo '<td> - </td>';
             else
