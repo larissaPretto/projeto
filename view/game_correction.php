@@ -30,83 +30,83 @@
             border-radius: 5px;
             width: 100%;
             margin-top: 5px;
+            resize: none; /* Impede a redimensão do textarea */
+            padding-left: 5px;
         }
         .form-container textarea.form-control-plaintext {
-            resize: none; /* Impede a redimensão do textarea */
             background-color: #1A1D21; /* Cor de fundo consistente com o estilo */
-            padding-left: 10px;
+            color: white;
+            border: 1px solid #2C2F33;
         }
-        .form-container textarea:focus {
-            background-color: #1A1D21; /* Garante a cor de fundo correta ao interagir */
-            color: white; /* Mantém a cor do texto */
-            border-color: #2C2F33; /* Mantém a borda correta ao interagir */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn {
+            color: white;
         }
         .category-section {
-            background-color: #2C2F33; /* Cor de fundo para a categoria */
+            background-color: #2C2F33;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
         }
         .category-title {
-            background-color: #23272A; /* Cor de fundo do título da categoria */
+            background-color: #23272A;
             padding: 10px;
             border-radius: 5px;
-            text-align: center; /* Centraliza o texto do título da categoria */
+            text-align: center;
             color: #fff;
             margin-bottom: 15px;
-        }
-        .response-checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .response-checkbox-wrapper label {
-            margin-bottom: 0; /* Remove a margem inferior do rótulo */
-        }
-        .response-checkbox-wrapper input[type="checkbox"] {
-            margin-left: 10px; /* Margem à esquerda do checkbox */
         }
         .response-textarea-wrapper {
             margin-top: 10px;
         }
         .response-textarea-wrapper textarea {
-            resize: none; /* Impede a redimensão do textarea */
-            background-color: #1A1D21; /* Cor de fundo consistente com o estilo */
+            background-color: #1A1D21;
             color: white;
             border: 1px solid #2C2F33;
             border-radius: 5px;
+            resize: none;
         }
-        .expected-response-wrapper {
+
+        .form-control:focus {
+            background-color: #1A1D21;
+        }
+        .response-checkbox-wrapper {
+            margin-bottom: 10px;
             margin-top: 10px;
         }
-        .expected-response-wrapper .response-textarea-wrapper {
-            margin-bottom: 10px;
+        .response-checkbox-wrapper input[type="checkbox"] {
+            margin-left: 10px;
         }
-        .expected-response-wrapper ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .expected-response-wrapper li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .expected-response-wrapper li::before {
-            content: '•'; /* Adiciona uma bolinha */
-            color: #007bff; /* Cor da bolinha */
-            font-size: 20px; /* Tamanho da bolinha */
-            margin-right: 10px;
-        }
+
         .container-left {
-            padding-left: 100px; /* Padding de 50px à esquerda */
-        }
-        .container-right {
-            padding-right: 100px; /* Padding de 50px à direita */
+            padding-left: 50px;
         }
         .container-title {
-            font-size: 24px; /* Tamanho da fonte do título */
-            margin-bottom: 20px; /* Espaço abaixo do título */
-            text-align: center; /* Centraliza o título */
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .response-section, .obs-section {
+            margin-bottom: 20px;
+        }
+
+        .divisoria {
+            position: absolute;
+            border-right: 2px solid #23272A; /* Cor da linha vertical */
+            height: 100%; /* Ajuste conforme necessário */
+            top: 0;
+            margin-left: -16px;
+        }
+
+        .item {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -116,7 +116,7 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9 container-left">
+            <div class="col-md-8 container-left">
                 <!-- Container principal (3/4 da página) -->
                 <div class="form-container">
                     <div class="container-title">Respostas do Aluno</div>
@@ -136,7 +136,7 @@
                     );
 
                     $index = 0;
-
+                    $cont = 0;
                     foreach ($categories as $categoryName => $category) {
                         $answers = search_answer($conectado, 1, $idGame, $idUser, $category);
 
@@ -146,39 +146,42 @@
                         echo '<div class="row">'; // Início da linha de respostas
 
                         foreach ($answers as $answer) {
-                            echo '<div class="col-md-6 mb-3">';
-                            
-                            // Wrapper para resposta e checkbox
-                            echo '<div class="response-checkbox-wrapper">';
-                            
-                            // Resposta
-                            echo '<div class="w-75">';
-                            echo '<label class="text-white align-middle">Resposta:</label>';
-                            echo '<textarea class="form-control-plaintext" readonly>' . $answer['answer'] . '</textarea>';
-                            echo '</div>';
-                            
-                            // Checkbox
-                            echo '<div class="w-25 text-center">';
-                            echo '<label class="text-white">Correção</label><br>';
-                            echo '<input type="checkbox" name="correct[' . $index . ']" value="1"' . ($answer['correct'] ? ' checked' : '') . '>';
-                            echo '</div>';
-                            
-                            echo '</div>'; // Fechamento do response-checkbox-wrapper
+                            echo '<div class="col-md-6 mb-3">';                           
+                                // Wrapper para resposta e checkbox
+                                echo '<div class="response-checkbox-wrapper">';
+                                    if ($cont %2 == 1) {
+                                        echo '<div class="divisoria"></div>'; 
+                                    }
+                                    // Resposta
+                                    echo '<div class="response-section">';
+                                        echo '<label class="text-white align-middle">Resposta:</label>';
+                                        echo '<textarea class="form-control-plaintext" readonly>' . $answer['answer'] . '</textarea>';
+                                    echo '</div>';
+                                    
 
-                            // Observação
-                            echo '<div class="response-textarea-wrapper">';
-                            echo '<label class="text-white">Obs:</label>';
-                            echo '<textarea name="obs[' . $index . ']" class="form-control">' . $answer['obs'] . '</textarea>';
-                            echo '</div>'; // Fechamento do response-textarea-wrapper
+                                    // Observação
+                                    echo '<div class="response-textarea-wrapper">';
+                                        echo '<label class="text-white">Observação:</label>';
+                                        echo '<textarea name="obs[' . $index . ']" class="form-control">' . $answer['obs'] . '</textarea>';
+                                    echo '</div>'; // Fechamento do response-textarea-wrapper
 
-                            echo '<input type="hidden" name="idAnsUser[' . $index . ']" value="' . $answer['idAnsUser'] . '">';
-                            echo '</div>'; // Fechamento da coluna
+                                    echo '<input type="hidden" name="idAnsUser[' . $index . ']" value="' . $answer['idAnsUser'] . '">';
 
+                                    // Checkbox
+                                    echo '<div class="response-checkbox-wrapper">';
+                                        echo '<label class="text-white">Correção:</label>';
+                                        echo '<input type="checkbox" name="correct[' . $index . ']" value="1" ' . ($answer['correct'] ? 'checked' : '') . '>';                                       
+                                    echo '</div>';
+                            
+                                echo '</div>'; // Fechamento do response-checkbox-wrapper
+                            echo '</div>'; // Fechamento da coluna                
                             $index++;
+                            $cont += 1;
                         }
 
                         echo '</div>'; // Fechamento da row
                         echo '</div>'; // Fechamento da category-section
+                        $cont = 0;
                     }
 
                     echo '<div class="text-center mt-4">'; // Centraliza o botão e adiciona margem superior
@@ -189,8 +192,7 @@
                     ?>
                 </div>
             </div>
-            <div class="col-md-3 container-right">
-                <!-- Novo container (1/4 da página) -->
+            <div class="col-md-4 container-right">
                 <div class="form-container">
                     <div class="container-title">Gabarito</div>
                     <?php
@@ -204,7 +206,7 @@
                         echo '<ul>';
 
                         foreach ($answersCorrect as $answerCorrect) {
-                            echo '<li>' . $answerCorrect['description'] . '</li>';
+                            echo '<li class="item" >' . $answerCorrect['description'] . '</li>';
                         }
 
                         echo '</ul>';
