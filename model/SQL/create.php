@@ -59,7 +59,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `game` (
   `idGame` int(11) NOT NULL AUTO_INCREMENT,
   `idUser` int(11) NOT NULL,
   `time` time NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
   `finish` tinyint(1) NOT NULL,
   `correction` tinyint(1) NOT NULL,
   `grade` double NOT NULL,
