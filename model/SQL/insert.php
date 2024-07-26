@@ -1,6 +1,27 @@
 <?php
 require_once "../conexao.php";
 
+$sql_insert = "INSERT INTO `phases` (`idPhases`, `name`, `description`) VALUES
+(1, 'empresa', 'emmmmmmm');";
+
+if ($conectado->multi_query($sql_insert) === TRUE) {
+    echo "Dados inseridos com sucesso!";
+} else {
+    echo "Erro ao inserir dados: " . $conectado->error;
+}
+
+$sql_insert = "INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `access`) VALUES
+(3, 'teste', 'teste@gmail.com', '$2y$10$Bcakk8S38szZM0VTb8gbU.nu6j2po3zgxbrHG2Wc3Vw9bWPhWM2PC', 0),
+(7, 'prof', 'prof@gmail.com', '$2y$10$.BBADI1jhTh87mQ1CtkxL.hbOhPZ3LtlDWh/yaNXgaQyjDCCzesGe', 1),
+(16, 'test2', 'teste2@gmail.com', '$2y$10$3msa1.M2zV4X2DQZngXlpukFNOuorbwRXZlse1yCqKODznv2wbEzG', 0);";
+
+if ($conectado->multi_query($sql_insert) === TRUE) {
+    echo "Dados inseridos com sucesso!";
+} else {
+    echo "Erro ao inserir dados: " . $conectado->error;
+}
+
+
 $sql_insert = "INSERT INTO `answerphase` (`idAnsPhase`, `idPhase`, `description`, `categories`) VALUES
 (4, 1, 'Obras Literárias: Manter informações sobre títulos, anos de publicação, número de páginas, editora, autores e preço de venda.\n', 1),
 (5, 1, 'Cadastro de Editoras: Registrar nome, endereço, cidade, telefone e nome para contato das editoras.\r\n', 1),
@@ -30,23 +51,6 @@ if ($conectado->multi_query($sql_insert) === TRUE) {
     echo "Erro ao inserir dados: " . $conectado->error;
 }
 
-$sql_insert = "INSERT INTO `answeruser` (`idAnsUser`, `answer`, `idPhases`, `idUser`, `idGame`, `correct`, `categories`, `obs`) VALUES
-(1, 'Cadastrar livro: nome, genero, ano', 1, 3, 1, 0, 1, 'Faltaram alguns dados '),
-(2, 'Cadastrar autor:nome, pais', 1, 3, 1, 1, 1, '-'),
-(3, 'Cadastrar genero: nome, descrição', 1, 3, 1, 1, 1, '-'),
-(4, 'Desempenho', 1, 3, 1, 1, 2, '-'),
-(5, 'Disponibilidade', 1, 3, 1, 1, 2, '-'),
-(6, 'Usabilidade', 1, 3, 1, 1, 2, '-'),
-(7, 'Entrevista', 1, 3, 1, 1, 3, '-'),
-(8, 'Análise de Documentos', 1, 3, 1, 1, 3, '-'),
-(9, 'lllalala', 1, 16, 2, 0, 1, '-');";
-
-if ($conectado->multi_query($sql_insert) === TRUE) {
-    echo "Dados inseridos com sucesso!";
-} else {
-    echo "Erro ao inserir dados: " . $conectado->error;
-}
-
 $sql_insert = "INSERT INTO `game` (`idGame`, `idUser`, `time`, `date`, `finish`, `correction`, `grade`) VALUES
 (1, 3, '00:16:47', '2024-07-14', 1, 1, 8.75),
 (2, 16, '00:00:00', '2024-07-14', 0, 0, 0),
@@ -58,19 +62,17 @@ if ($conectado->multi_query($sql_insert) === TRUE) {
     echo "Erro ao inserir dados: " . $conectado->error;
 }
 
-$sql_insert = "INSERT INTO `phases` (`idPhases`, `name`, `description`) VALUES
-(1, 'empresa', 'emmmmmmm');";
 
-if ($conectado->multi_query($sql_insert) === TRUE) {
-    echo "Dados inseridos com sucesso!";
-} else {
-    echo "Erro ao inserir dados: " . $conectado->error;
-}
-
-$sql_insert = "INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `access`) VALUES
-(3, 'teste', 'teste@gmail.com', '$2y$10$Bcakk8S38szZM0VTb8gbU.nu6j2po3zgxbrHG2Wc3Vw9bWPhWM2PC', 0),
-(7, 'prof', 'prof@gmail.com', '$2y$10$.BBADI1jhTh87mQ1CtkxL.hbOhPZ3LtlDWh/yaNXgaQyjDCCzesGe', 1),
-(16, 'test2', 'teste2@gmail.com', '$2y$10$3msa1.M2zV4X2DQZngXlpukFNOuorbwRXZlse1yCqKODznv2wbEzG', 0);";
+$sql_insert = "INSERT INTO `answeruser` (`idAnsUser`, `answer`, `idPhases`, `idUser`, `idGame`, `correct`, `categories`, `obs`) VALUES
+(1, 'Cadastrar livro: nome, genero, ano', 1, 3, 1, 0, 1, 'Faltaram alguns dados '),
+(2, 'Cadastrar autor:nome, pais', 1, 3, 1, 1, 1, '-'),
+(3, 'Cadastrar genero: nome, descrição', 1, 3, 1, 1, 1, '-'),
+(4, 'Desempenho', 1, 3, 1, 1, 2, '-'),
+(5, 'Disponibilidade', 1, 3, 1, 1, 2, '-'),
+(6, 'Usabilidade', 1, 3, 1, 1, 2, '-'),
+(7, 'Entrevista', 1, 3, 1, 1, 3, '-'),
+(8, 'Análise de Documentos', 1, 3, 1, 1, 3, '-'),
+(9, 'lllalala', 1, 16, 2, 0, 1, '-');";
 
 if ($conectado->multi_query($sql_insert) === TRUE) {
     echo "Dados inseridos com sucesso!";
