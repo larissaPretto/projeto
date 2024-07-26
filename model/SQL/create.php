@@ -6,6 +6,37 @@ if ($conectado->connect_error) {
     die("Conexão falhou: " . $conectado->connect_error);
 }
 
+// Executar SQL para criar tabela `phases`
+$sql = "CREATE TABLE IF NOT EXISTS `phases` (
+  `idPhases` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`idPhases`)
+)";
+
+if ($conectado->query($sql) === TRUE) {
+  echo "Tabela phases criada com sucesso!";
+} else {
+  echo "Erro ao criar tabela: " . $conectado->error;
+}
+
+// Executar SQL para criar tabela `user`
+$sql = "CREATE TABLE IF NOT EXISTS `user` (
+  `idUser` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `access` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idUser`),
+  UNIQUE KEY `uniqemail` (`email`)
+)";
+
+if ($conectado->query($sql) === TRUE) {
+  echo "Tabela user criada com sucesso!";
+} else {
+  echo "Erro ao criar tabela: " . $conectado->error;
+}
+
 // Executar SQL para criar tabela `answerphase`
 $sql = "CREATE TABLE IF NOT EXISTS `answerphase` (
     `idAnsPhase` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,6 +52,26 @@ if ($conectado->query($sql) === TRUE) {
     echo "Tabela answerphase criada com sucesso!";
 } else {
     echo "Erro ao criar tabela: " . $conectado->error;
+}
+
+// Executar SQL para criar tabela `game`
+$sql = "CREATE TABLE IF NOT EXISTS `game` (
+  `idGame` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) NOT NULL,
+  `time` time NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `finish` tinyint(1) NOT NULL,
+  `correction` tinyint(1) NOT NULL,
+  `grade` double NOT NULL,
+  PRIMARY KEY (`idGame`),
+  KEY `fk_user` (`idUser`),
+  CONSTRAINT `fk_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
+)";
+
+if ($conectado->query($sql) === TRUE) {
+  echo "Tabela game criada com sucesso!";
+} else {
+  echo "Erro ao criar tabela: " . $conectado->error;
 }
 
 // Executar SQL para criar tabela `answeruser`
@@ -44,57 +95,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `answeruser` (
 
 if ($conectado->query($sql) === TRUE) {
     echo "Tabela answeruser criada com sucesso!";
-} else {
-    echo "Erro ao criar tabela: " . $conectado->error;
-}
-
-// Executar SQL para criar tabela `game`
-$sql = "CREATE TABLE IF NOT EXISTS `game` (
-    `idGame` int(11) NOT NULL AUTO_INCREMENT,
-    `idUser` int(11) NOT NULL,
-    `time` time NOT NULL,
-    `date` date NOT NULL DEFAULT current_timestamp(),
-    `finish` tinyint(1) NOT NULL,
-    `correction` tinyint(1) NOT NULL,
-    `grade` double NOT NULL,
-    PRIMARY KEY (`idGame`),
-    KEY `fk_user` (`idUser`),
-    CONSTRAINT `fk_user` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
-)";
-
-if ($conectado->query($sql) === TRUE) {
-    echo "Tabela game criada com sucesso!";
-} else {
-    echo "Erro ao criar tabela: " . $conectado->error;
-}
-
-// Executar SQL para criar tabela `phases`
-$sql = "CREATE TABLE IF NOT EXISTS `phases` (
-    `idPhases` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(30) NOT NULL,
-    `description` text NOT NULL,
-    PRIMARY KEY (`idPhases`)
-)";
-
-if ($conectado->query($sql) === TRUE) {
-    echo "Tabela phases criada com sucesso!";
-} else {
-    echo "Erro ao criar tabela: " . $conectado->error;
-}
-
-// Executar SQL para criar tabela `user`
-$sql = "CREATE TABLE IF NOT EXISTS `user` (
-    `idUser` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(50) NOT NULL,
-    `email` varchar(100) NOT NULL,
-    `password` varchar(256) NOT NULL,
-    `access` tinyint(1) NOT NULL,
-    PRIMARY KEY (`idUser`),
-    UNIQUE KEY `uniqemail` (`email`)
-)";
-
-if ($conectado->query($sql) === TRUE) {
-    echo "Tabela user criada com sucesso!";
 } else {
     echo "Erro ao criar tabela: " . $conectado->error;
 }
