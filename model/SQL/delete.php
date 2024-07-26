@@ -18,7 +18,7 @@ if ($conectado->query($sql) === TRUE) {
     echo "Erro ao criar tabela: " . $conectado->error;
 }
 
-$sql = "DROP TABLE IF EXISTS `phase`";
+$sql = "DROP TABLE IF EXISTS `phases`";
 
 if ($conectado->query($sql) === TRUE) {
     echo "Tabela answerphase criada com sucesso!";
