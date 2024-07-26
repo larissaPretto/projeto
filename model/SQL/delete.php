@@ -17,3 +17,19 @@ if ($conectado->query($sql) === TRUE) {
 } else {
     echo "Erro ao criar tabela: " . $conectado->error;
 }
+
+$sql = "DROP TABLE IF EXISTS `phase`";
+
+if ($conectado->query($sql) === TRUE) {
+    echo "Tabela answerphase criada com sucesso!";
+} else {
+    echo "Erro ao criar tabela: " . $conectado->error;
+}
+
+$sql = "DROP TABLE IF EXISTS `user`";
+
+if ($conectado->query($sql) === TRUE) {
+    echo "Tabela answerphase criada com sucesso!";
+} else {
+    echo "Erro ao criar tabela: " . $conectado->error;
+}
