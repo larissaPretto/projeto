@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    require_once "../model/conexao.php";
+    require_once "../model/functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,9 +121,6 @@
     <div class="container-fluid">
         <div class="row">
             <?php
-                session_start();
-                require_once "../model/conexao.php";
-                require_once "../model/functions.php";
 
                 $user = search_user($conectado, $_SESSION["email"]);
 
